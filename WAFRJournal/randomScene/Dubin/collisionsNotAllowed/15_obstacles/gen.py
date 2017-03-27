@@ -45,7 +45,7 @@ for i in xrange(1, 11):
 		    data[k] = "planningEnvironmentPath = " + environmentTemplate + str(numObstacles) + "_" + str(j) + ".sdf \n"
 		if "executionEnvironmentPath" in data[k]:
 		    data[k] = "executionEnvironmentPath = " + environmentTemplate + str(numObstacles) + "_" + str(j) + ".sdf \n"
-            with open("cfg/" + str(i) + "/" + robotExecName + str(j) + ".cfg", 'a+') as l:
+            with open("cfg/" + str(i) + "/" + robot + str(j) + ".cfg", 'a+') as l:
 		for k in xrange(len(data)):
 		    l.write(data[k])	
 	
