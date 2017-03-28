@@ -7,7 +7,7 @@ import argparse
 parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument('-nO', '--numObstacles', type=int, default=5,
                     help='Number of obstacles')
-parser.add_argument('-r', '--robot', type=str, default="dubin", help="The robot")
+parser.add_argument('-r', '--robot', type=str, default="Dubin", help="The robot")
 args = parser.parse_args()
 
 
