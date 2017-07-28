@@ -53,7 +53,10 @@ for i in xrange(1, covarianceSteps+1):
 		    elif "observationError" in data[k]:
 			data[k] = "observationError = " + str(observationCovariance) + " \n"
 		    elif "logPath" in data[k]:
+			dr = resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/"
 			data[k] = "logPath = " + resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/ \n"
+			if not os.path.exists(dr):
+			    os.makedirs(dr)
 	            elif "logFilePostfix" in data[k]:
 			data[k] = "logFilePostfix = " + str(l) + " \n"	
 		with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
