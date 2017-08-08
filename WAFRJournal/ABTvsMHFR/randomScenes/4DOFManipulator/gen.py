@@ -56,8 +56,8 @@ for l in xrange(numRuns) :
 	    elif "observationError" in data[k]:
 	        data[k] = "observationError = " + str(0.0375) + " \n"
 	    elif "logPath" in data[k]:			
-		dr = resultsPath + environmentTemplate + "/" + str(numObstacles) + "_obstacles \n"
-		data[k] = "logPath = " + dr
+		dr = resultsPath + environmentTemplate + "/" + str(numObstacles) + "_obstacles"
+		data[k] = "logPath = " + dr + " \n"
 		if not os.path.exists(dr):
 		    os.makedirs(dr)
 	    elif "logFilePostfix" in data[k]:
