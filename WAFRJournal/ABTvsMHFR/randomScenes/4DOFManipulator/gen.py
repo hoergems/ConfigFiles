@@ -35,11 +35,13 @@ processCovariance = minCovariance
 observationCovariance = minCovariance
 
 folder = "cfg"
-if os.path.isdir(folder):
+if not os.path.isdir(folder):
+    os.makedirs(folder)
     shutil.rmtree(folder)
-os.makedirs(folder)
 
 folder = "cfg/" + str(numObstacles) + "_obstacles" 
+if os.path.isdir(folder):
+    shutil.rmtree(folder)
 os.makedirs(folder)
 for l in xrange(numRuns) :
     with open(environmentTemplate + ".cfg", 'r') as f:
