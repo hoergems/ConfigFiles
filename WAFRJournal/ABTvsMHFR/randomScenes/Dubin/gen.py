@@ -52,9 +52,9 @@ for l in xrange(numRuns) :
 	    if "executionEnvironmentPath" in data[k]:
 		data[k] = "executionEnvironmentPath = maze_environment_random__" + str(numObstacles) + "_" + str(l) + ".sdf"
 	    if "processError" in data[k]:
-		data[k] = "processError = " + str(0.0375) + " \n"
+		data[k] = "processError = " + str(0.0195) + " \n"
 	    elif "observationError" in data[k]:
-	        data[k] = "observationError = " + str(0.0375) + " \n"
+	        data[k] = "observationError = " + str(0.0195) + " \n"
 	    elif "logPath" in data[k]:			
 		dr = resultsPath + environmentTemplate + "/" + str(numObstacles) + "_obstacles"
 		data[k] = "logPath = " + dr + " \n"
