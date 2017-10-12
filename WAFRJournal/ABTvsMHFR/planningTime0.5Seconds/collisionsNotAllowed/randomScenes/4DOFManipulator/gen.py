@@ -68,8 +68,8 @@ for i in xrange(1, covarianceSteps+1):
 			if numObstacles > 0:
 			    dr = resultsPath + environmentTemplate + "/" + str(numObstacles) + "_obstacles/" + str(i) + "_proc_" + str(j) + "_obs/"
 			data[k] = "logPath = " + dr + " \n"
-			'''if not os.path.exists(dr):
-			    os.makedirs(dr)'''
+			if not os.path.exists(dr):
+			    os.makedirs(dr)
 	            elif "stepTimeout" in data[k]:
 			data[k] = "stepTimeout = " + str(planningTime) + " \n"
 	            elif "logFilePostfix" in data[k]:
