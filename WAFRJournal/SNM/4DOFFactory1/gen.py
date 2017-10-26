@@ -28,7 +28,12 @@ maxCovariance = float(args.maxCovariance)
 covarianceSteps = int(args.covarianceSteps)
 numRuns = int(args.numRuns)
     
-covarianceStepSize = (maxCovariance - minCovariance) / (covarianceSteps - 1)
+covarianceStepSize = 0.0
+if covarianceSteps < 1:
+    print "ERROR: Covariance steps must be greater than 0"
+    sys.exit(0)
+elif covarianceSteps > 1:    
+    covarianceStepSize = (maxCovariance - minCovariance) / (covarianceSteps - 1)
 processCovariance = minCovariance
 observationCovariance = minCovariance
 
