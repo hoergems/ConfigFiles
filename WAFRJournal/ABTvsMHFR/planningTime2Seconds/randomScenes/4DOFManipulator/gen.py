@@ -18,9 +18,9 @@ args = parser.parse_args()
 
 
 numObstacles = args.numObstacles
-robot = "4DOF"
 robotExecName = "robot"
 environmentTemplate = args.environmentTemplate
+robot = environmentTemplate
 resultsPath = args.resultsPath
 if (resultsPath.strip()[-1] != "/"):
     resultsPath += "/"
@@ -29,10 +29,6 @@ minCovariance = float(args.minCovariance)
 maxCovariance = float(args.maxCovariance)
 covarianceSteps = int(args.covarianceSteps)
 numRuns = int(args.numRuns)
-    
-covarianceStepSize = (maxCovariance - minCovariance) / (covarianceSteps - 1)
-processCovariance = minCovariance
-observationCovariance = minCovariance
 
 folder = "cfg"
 if not os.path.isdir(folder):
@@ -48,13 +44,13 @@ for l in xrange(numRuns) :
         data = f.readlines()
 	for k in xrange(len(data)):
 	    if "planningEnvironmentPath" in data[k]:
-		data[k] = "planningEnvironmentPath = world_random__" + str(numObstacles) + "_" + str(l) + ".sdf"
+		data[k] = "planningEnvironmentPath = world_random_" + environmentTemplate + "_" + str(numObstacles) + "_" + str(l) + ".sdf"
 	    if "executionEnvironmentPath" in data[k]:
-		data[k] = "executionEnvironmentPath = world_random__" + str(numObstacles) + "_" + str(l) + ".sdf"
+		data[k] = "executionEnvironmentPath = world_random_" + environmentTemplate + "_" + str(numObstacles) + "_" + str(l) + ".sdf"
 	    if "processError" in data[k]:
-		data[k] = "processError = " + str(0.0375) + " \n"
+		data[k] = "processError = " + str(minCovariance) + " \n"
 	    elif "observationError" in data[k]:
-	        data[k] = "observationError = " + str(0.0375) + " \n"
+	        data[k] = "observationError = " + str(minCovariance) + " \n"
 	    elif "logPath" in data[k]:			
 		dr = resultsPath + environmentTemplate + "/" + str(numObstacles) + "_obstacles"
 		data[k] = "logPath = " + dr + " \n"
