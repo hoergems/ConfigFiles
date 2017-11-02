@@ -24,15 +24,8 @@ environmentTemplate = args.environmentTemplate
 resultsPath = args.resultsPath
 if (resultsPath.strip()[-1] != "/"):
     resultsPath += "/"
- 
-minCovariance = float(args.minCovariance)
-maxCovariance = float(args.maxCovariance)
-covarianceSteps = int(args.covarianceSteps)
+
 numRuns = int(args.numRuns)
-    
-covarianceStepSize = (maxCovariance - minCovariance) / (covarianceSteps - 1)
-processCovariance = minCovariance
-observationCovariance = minCovariance
 
 folder = "cfg"
 if not os.path.isdir(folder):
