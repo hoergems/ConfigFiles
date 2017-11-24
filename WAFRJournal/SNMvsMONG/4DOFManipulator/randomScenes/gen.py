@@ -38,14 +38,15 @@ processCovariance = minCovariance
 observationCovariance = minCovariance
 
 folder = "cfg"
-if os.path.isdir(folder):
-    shutil.rmtree(folder)
-os.makedirs(folder)
+if not os.path.isdir(folder):    
+    os.makedirs(folder)
 
 for i in xrange(1, covarianceSteps+1):
     observationCovariance = minCovariance
     for j in xrange(1, covarianceSteps+1):
-        folder = "cfg/" + str(numObstacles) + "Obstacles/" + str(i) + "_proc_" + str(j) + "_obs"        
+        folder = "cfg/" + str(numObstacles) + "Obstacles/" + str(i) + "_proc_" + str(j) + "_obs"
+        if os.path.isdir(folder):
+            os.remove(folder)
         os.makedirs(folder)
         for l in xrange(numRuns) :
             with open(environmentTemplate + ".cfg", 'r') as f:
