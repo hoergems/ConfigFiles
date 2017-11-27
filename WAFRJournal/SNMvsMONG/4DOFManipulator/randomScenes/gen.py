@@ -5,6 +5,7 @@ import glob
 import argparse
 import shutil
 from random import randint
+import shutil
 
 parser = argparse.ArgumentParser(description='Process some integers.')
 parser.add_argument('-nO', '--numObstacles', type=int, default=5,
@@ -46,7 +47,7 @@ for i in xrange(1, covarianceSteps+1):
     for j in xrange(1, covarianceSteps+1):
         folder = "cfg/" + str(numObstacles) + "Obstacles/" + str(i) + "_proc_" + str(j) + "_obs"
         if os.path.isdir(folder):
-            os.remove(folder)
+            shutil.rmtree(folder)
         os.makedirs(folder)
         for l in xrange(numRuns) :
             with open(environmentTemplate + ".cfg", 'r') as f:
