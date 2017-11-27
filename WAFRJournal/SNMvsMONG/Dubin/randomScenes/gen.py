@@ -67,10 +67,14 @@ for i in xrange(1, covarianceSteps+1):
                     elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
                         trajectoryOutputFile = "/data/hoe01h/oppt_devel/files/trajectorySamplesDubinRandom/trajectorySamplesDubinRandom" + str(numObstacles) + "Scene" + str(l) + "txt"
                         data[k] = "outputFile = " + str(trajectoryOutputFile) + "\n"
-                    elif "measureOutputFile" in data[k]:                
-                        data[k] = "measureOutputFile = /data/hoe01h/oppt_devel/files/measureSamplesDubinRandom/measureSamplesDubinRandom" + str(numObstacles) + "Scene" + str(l) + ".txt \n"
+                    elif "measureOutputFileSNM" in data[k]:
+			data[k] = "measureOutputFileSNM = /data/hoe01h/oppt_devel/files/measureSamplesDubinRandom/measureSamplesDubinRandom" + str(numObstacles) + "Scene" + str(l) + "SNM.txt \n"
+		    elif "measureOutputFileMONG" in data[k]:
+			data[k] = "measureOutputFileMONG = /data/hoe01h/oppt_devel/files/measureSamplesDubinRandom/measureSamplesDubinRandom" + str(numObstacles) + "Scene" + str(l) + "MONG.txt \n"                    
                     elif "snmSampleFile" in data[k]:
-                        data[k] = "snmSampleFile = measureSamplesDubinRandom" + str(numObstacles) + "Scene" + str(l) + ".txt \n"
+                        data[k] = "snmSampleFile = measureSamplesDubinRandom" + str(numObstacles) + "Scene" + str(l) + "SNM.txt \n"
+                    elif "monGSampleFile" in data[k]:
+                        data[k] = "monGSampleFile = measureSamplesDubinRandom" + str(numObstacles) + "Scene" + str(l) + "MONG.txt \n"
                     elif "planningEnvironmentPath" in data[k]:			
                         data[k] = "planningEnvironmentPath = maze_environment_random_Dubin_" + str(numObstacles) + "_" + str(randInt) + ".sdf \n"
                     elif "executionEnvironmentPath" in data[k]:
