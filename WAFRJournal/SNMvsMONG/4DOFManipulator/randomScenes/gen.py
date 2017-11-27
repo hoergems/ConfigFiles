@@ -75,7 +75,7 @@ for i in xrange(1, covarianceSteps+1):
                     elif "snmSampleFile" in data[k]:
                         data[k] = "snmSampleFile = measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "SNM.txt \n"
                     elif "monGSampleFile" in data[k]:
-                        data[k] = "snmSampleFile = measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "MONG.txt \n"
+                        data[k] = "monGSampleFile = measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "MONG.txt \n"
                     elif "planningEnvironmentPath" in data[k]:
                         data[k] = "planningEnvironmentPath = world_random_4DOFManipulator_" + str(numObstacles) + "_" + str(randInt) + ".sdf \n"
                     elif "executionEnvironmentPath" in data[k]:
