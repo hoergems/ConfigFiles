@@ -51,8 +51,7 @@ for i in xrange(1, covarianceSteps+1):
         os.makedirs(folder)
         for l in xrange(numRuns) :
             with open(environmentTemplate + ".cfg", 'r') as f:
-                data = f.readlines()
-                randInt = randint(0, 99)
+                data = f.readlines()                
                 for k in xrange(len(data)):
                     if "processError" in data[k]:
                         data[k] = "processError = " + str(processCovariance) + " \n"
@@ -77,9 +76,9 @@ for i in xrange(1, covarianceSteps+1):
                     elif "monGSampleFile" in data[k]:
                         data[k] = "monGSampleFile = measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "MONG.txt \n"
                     elif "planningEnvironmentPath" in data[k]:
-                        data[k] = "planningEnvironmentPath = world_random_4DOFManipulator_" + str(numObstacles) + "_" + str(randInt) + ".sdf \n"
+                        data[k] = "planningEnvironmentPath = world_random_4DOFManipulator_" + str(numObstacles) + "_" + str(l) + ".sdf \n"
                     elif "executionEnvironmentPath" in data[k]:
-                        data[k] = "executionEnvironmentPath = world_random_4DOFManipulator_" + str(numObstacles) + "_" + str(randInt) + ".sdf \n"
+                        data[k] = "executionEnvironmentPath = world_random_4DOFManipulator_" + str(numObstacles) + "_" + str(l) + ".sdf \n"
                 with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
                     for k in xrange(len(data)):
                         l.write(data[k])		
