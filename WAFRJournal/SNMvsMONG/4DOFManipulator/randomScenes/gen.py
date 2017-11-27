@@ -67,10 +67,14 @@ for i in xrange(1, covarianceSteps+1):
                     elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
                         trajectoryOutputFile = "/data/hoe01h/oppt_devel/files/trajectorySamples4DOFRandom/trajectorySamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "txt"
                         data[k] = "outputFile = " + str(trajectoryOutputFile) + "\n"
-                    elif "measureOutputFile" in data[k]:                
-                        data[k] = "measureOutputFile = /data/hoe01h/oppt_devel/files/measureSamples4DOFRandom/measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + ".txt \n"
+                    elif "measureOutputFileSNM" in data[k]:
+			data[k] = "measureOutputFileSNM = /data/hoe01h/oppt_devel/files/measureSamples4DOFRandom/measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "SNM.txt \n"
+                    elif "measureOutputFileMONG" in data[k]:
+			data[k] = "measureOutputFileMONG = /data/hoe01h/oppt_devel/files/measureSamples4DOFRandom/measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "MONG.txt \n"
                     elif "snmSampleFile" in data[k]:
-                        data[k] = "snmSampleFile = measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + ".txt \n"
+                        data[k] = "snmSampleFile = measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "SNM.txt \n"
+                    elif "monGSampleFile" in data[k]:
+                        data[k] = "snmSampleFile = measureSamples4DOFRandom" + str(numObstacles) + "Scene" + str(l) + "MONG.txt \n"
                     elif "planningEnvironmentPath" in data[k]:
                         data[k] = "planningEnvironmentPath = world_random_4DOFManipulator_" + str(numObstacles) + "_" + str(randInt) + ".sdf \n"
                     elif "executionEnvironmentPath" in data[k]:
