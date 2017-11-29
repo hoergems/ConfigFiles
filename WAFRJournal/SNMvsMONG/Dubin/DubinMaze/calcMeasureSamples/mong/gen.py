@@ -66,12 +66,12 @@ for i in xrange(1, covarianceSteps+1):
 		elif "measureUsed" in data[k]:
 		    data[k] = "measureUsed = MONG \n"
 		elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
-		    trajectoryOutputFile = "/data/hoe01h/oppt_devel/files/trajectorySamplesDubinEmptyEnvironment/trajectorySamplesDubinEmptyEnvironment.txt"
+		    trajectoryOutputFile = "/data/hoe01h/oppt_devel/files/trajectorySamplesDubinMazeEnvironment/trajectorySamplesDubinMazeEnvironment.txt"
 		    data[k] = "outputFile = " + str(trajectoryOutputFile) + "\n"
 		elif "measureOutputFileSNM" in data[k]:
-		    data[k] = "measureOutputFileSNM = /data/hoe01h/oppt_devel/files/measureSamplesDubinEmptyEnvironment/measureSamplesDubinEmptyEnvironment" + str(i) + "_proc_" + str(i) + "_obsSNM.txt \n"
+		    data[k] = "measureOutputFileSNM = /data/hoe01h/oppt_devel/files/measureSamplesDubinMazeEnvironment/measureSamplesDubinMazeEnvironment" + str(i) + "_proc_" + str(i) + "_obsSNM.txt \n"
 		elif "measureOutputFileMONG" in data[k]:
-		    data[k] = "measureOutputFileMONG = /data/hoe01h/oppt_devel/files/measureSamplesDubinEmptyEnvironment/measureSamplesDubinEmptyEnvironment" + str(i) + "_proc_" + str(i) + "_obsMONG.txt \n"
+		    data[k] = "measureOutputFileMONG = /data/hoe01h/oppt_devel/files/measureSamplesDubinMazeEnvironment/measureSamplesDubinMazeEnvironment" + str(i) + "_proc_" + str(i) + "_obsMONG.txt \n"
 	    with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
 		for k in xrange(len(data)):
 		    l.write(data[k])		
