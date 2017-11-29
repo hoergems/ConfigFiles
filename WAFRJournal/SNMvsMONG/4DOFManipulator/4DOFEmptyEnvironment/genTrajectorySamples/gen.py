@@ -26,6 +26,8 @@ environmentTemplate = args.environmentTemplate
 resultsPath = args.resultsPath
 if (resultsPath.strip()[-1] != "/"):
     resultsPath += "/"
+if not os.path.isdir(resultsPath):    
+    os.makedirs(resultsPath)
  
 minCovariance = float(args.minCovariance)
 maxCovariance = float(args.maxCovariance)
