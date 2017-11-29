@@ -43,38 +43,37 @@ if not os.path.isdir(folder):
     os.makedirs(folder)
 
 for i in xrange(1, covarianceSteps+1):
-    observationCovariance = minCovariance
-    for j in xrange(1, covarianceSteps+1):
-        folder = "cfg/" + str(numObstacles) + "Obstacles/" + str(i) + "_proc_" + str(j) + "_obs"
-        if os.path.isdir(folder):
-            shutil.rmtree(folder)
-        os.makedirs(folder)
-        for l in xrange(numRuns) :
-            with open(environmentTemplate + ".cfg", 'r') as f:
-                data = f.readlines()                
+    observationCovariance = minCovariance    
+    folder = "cfg/" + str(numObstacles) + "Obstacles/" + str(i) + "_proc_" + str(i) + "_obs"
+    if os.path.isdir(folder):
+        shutil.rmtree(folder)
+    os.makedirs(folder)
+    for l in xrange(numRuns) :
+        with open(environmentTemplate + ".cfg", 'r') as f:
+            data = f.readlines()                
+            for k in xrange(len(data)):
+                if "processError" in data[k]:
+                    data[k] = "processError = " + str(processCovariance) + " \n"
+                elif "observationError" in data[k]:
+                    data[k] = "observationError = " + str(observationCovariance) + " \n"
+                elif "logPath" in data[k]:
+                    dr = resultsPath + environmentTemplate + "/" + str(numObstacles) + "_obstacles/" + str(i) + "_proc_" + str(i) + "_obs/"
+                    data[k] = "logPath = " + dr + " \n"
+                    if not os.path.exists(dr):
+                        os.makedirs(dr)
+                elif "logFilePostfix" in data[k]:
+                    data[k] = "logFilePostfix = " + str(l) + " \n"
+                elif "measureUsed" in data[k]:
+                    data[k] = "measureUsed = MONG \n"
+                elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
+                    trajectoryOutputFile = "/data/hoe01h/oppt_devel/files/trajectorySamples4DOFEmptyEnvironment/trajectorySamples4DOFEmptyEnvironment.txt"
+                    data[k] = "outputFile = " + str(trajectoryOutputFile) + "\n"
+                elif "measureOutputFileSNM" in data[k]:
+	            data[k] = "measureOutputFileSNM = /data/hoe01h/oppt_devel/files/measureSamples4DOFEmptyEnvironment/measureSamples4DOFEmptyEnvironment" + str(i) + "_proc_" + str(i) + "_obsSNM.txt \n"
+                elif "measureOutputFileMONG" in data[k]:
+		    data[k] = "measureOutputFileMONG = /data/hoe01h/oppt_devel/files/measureSamples4DOFEmptyEnvironment/measureSamples4DOFEmptyEnvironment" + str(i) + "_proc_" + str(i) + "_obsMONG.txt \n"
+            with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
                 for k in xrange(len(data)):
-                    if "processError" in data[k]:
-                        data[k] = "processError = " + str(processCovariance) + " \n"
-                    elif "observationError" in data[k]:
-                        data[k] = "observationError = " + str(observationCovariance) + " \n"
-                    elif "logPath" in data[k]:
-                        dr = resultsPath + environmentTemplate + "/" + str(numObstacles) + "_obstacles/" + str(i) + "_proc_" + str(j) + "_obs/"
-                        data[k] = "logPath = " + dr + " \n"
-                        if not os.path.exists(dr):
-                            os.makedirs(dr)
-                    elif "logFilePostfix" in data[k]:
-                        data[k] = "logFilePostfix = " + str(l) + " \n"	
-                    elif "measureUsed" in data[k]:
-                        data[k] = "measureUsed = MONG \n"
-                    elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
-                        trajectoryOutputFile = "/data/hoe01h/oppt_devel/files/trajectorySamples4DOFEmptyEnvironment/trajectorySamples4DOFEmptyEnvironment.txt"
-                        data[k] = "outputFile = " + str(trajectoryOutputFile) + "\n"
-                    elif "measureOutputFileSNM" in data[k]:
-			data[k] = "measureOutputFileSNM = /data/hoe01h/oppt_devel/files/measureSamples4DOFEmptyEnvironment/measureSamples4DOFEmptyEnvironment" + str(i) + "_proc_" + str(j) + "_obsSNM.txt \n"
-                    elif "measureOutputFileMONG" in data[k]:
-			data[k] = "measureOutputFileMONG = /data/hoe01h/oppt_devel/files/measureSamples4DOFEmptyEnvironment/measureSamples4DOFEmptyEnvironment" + str(i) + "_proc_" + str(j) + "_obsMONG.txt \n"
-                with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
-                    for k in xrange(len(data)):
-                        l.write(data[k])		
-            observationCovariance += covarianceStepSize
-            processCovariance += covarianceStepSize
+                    l.write(data[k])		
+        observationCovariance += covarianceStepSize
+        processCovariance += covarianceStepSize
