@@ -65,7 +65,7 @@ for i in xrange(1, covarianceSteps+1):
                     elif "logFilePostfix" in data[k]:
                         data[k] = "logFilePostfix = " + str(l) + " \n"	
                     elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
-                        trajectoryOutputFile = "/data/hoe01h/oppt_devel/files/trajectorySamplesDubinMazeEnvironment/trajectorySamplesDubinMazeEnvironment.txt"
+                        trajectoryOutputFile = "/data/hoe01h/oppt_devel/files/trajectorySamplesDubinMaze/trajectorySamplesDubinMaze.txt"
                         data[k] = "outputFile = " + str(trajectoryOutputFile) + "\n"
                 with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
                     for k in xrange(len(data)):
