@@ -51,22 +51,22 @@ for i in xrange(1, covarianceSteps+1):
 			data = f.readlines()
 			for k in xrange(len(data)):
 				if "processError" in data[k]:
-				data[k] = "processError = " + str(processCovariance) + " \n"
+					data[k] = "processError = " + str(processCovariance) + " \n"
 				elif "observationError" in data[k]:
-				data[k] = "observationError = " + str(observationCovariance) + " \n"
+					data[k] = "observationError = " + str(observationCovariance) + " \n"
 				elif "logPath" in data[k]:
-				dr = resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/"
-				data[k] = "logPath = " + resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/ \n"
-				if not os.path.exists(dr):
-					os.makedirs(dr)
-					elif "logFilePostfix" in data[k]:
-				data[k] = "logFilePostfix = " + str(l) + " \n"	
+					dr = resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/"
+					data[k] = "logPath = " + resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/ \n"
+					if not os.path.exists(dr):
+						os.makedirs(dr)
+				elif "logFilePostfix" in data[k]:
+					data[k] = "logFilePostfix = " + str(l) + " \n"	
 				elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
-				data[k] = "outputFile = /data/hoe01h/oppt_devel/files/trajectorySamplesDubin/trajectorySamplesDubinEmptyEnvironment.txt \n"
+					data[k] = "outputFile = /data/hoe01h/oppt_devel/files/trajectorySamplesDubin/trajectorySamplesDubinEmptyEnvironment.txt \n"
 				elif "measureOutputFileEMD" in data[k]:
-				data[k] = "measureOutputFileEMD = /data/hoe01h/oppt_devel/files/measureSamplesDubin/measureSamplesDubinEmptyEnvironmentEMD" + str(l) + ".txt \n" 
+					data[k] = "measureOutputFileEMD = /data/hoe01h/oppt_devel/files/measureSamplesDubin/measureSamplesDubinEmptyEnvironmentEMD" + str(l) + ".txt \n" 
 			with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
 				for k in xrange(len(data)):
-				l.write(data[k])		
+					l.write(data[k])		
 	observationCovariance += covarianceStepSize
 	processCovariance += covarianceStepSize
