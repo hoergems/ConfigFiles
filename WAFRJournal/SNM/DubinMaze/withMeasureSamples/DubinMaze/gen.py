@@ -62,9 +62,9 @@ for i in xrange(1, covarianceSteps+1):
 	            elif "logFilePostfix" in data[k]:
 			data[k] = "logFilePostfix = " + str(l) + " \n"	
 		    elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
-			data[k] = "outputFile = trajectorySamplesKukaTable_" + str(l) + ".txt \n"
-		    elif "measureOutputFile" in data[k]:
-			data[k] = "measureOutputFile = /data/hoe01h/oppt_devel/files/measure_KukaTable_" + str(l) + ".txt \n" 
+			data[k] = "outputFile = /data/hoe01h/oppt_devel/files/trajectorySamplesDubin/trajectorySamplesDubinMaze.txt \n"
+		    elif "measureOutputFileEMD" in data[k]:
+			data[k] = "measureOutputFileEMD = /data/hoe01h/oppt_devel/files/measureSamplesDubin/measureSamplesDubinMazeEMD" + str(l) + ".txt \n" 
 		with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
 		    for k in xrange(len(data)):
 			l.write(data[k])		
