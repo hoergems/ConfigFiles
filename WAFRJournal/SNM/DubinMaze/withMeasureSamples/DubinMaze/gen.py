@@ -42,8 +42,8 @@ if os.path.isdir(folder):
 os.makedirs(folder)
 
 for i in xrange(1, covarianceSteps+1):
-    observationCovariance = minCovariance
-    j=i
+	observationCovariance = minCovariance
+	j=i
 	folder = "cfg" + "/" + str(i) + "_proc_" + str(j) + "_obs"
 	os.makedirs(folder)
 	for l in xrange(numRuns) :
