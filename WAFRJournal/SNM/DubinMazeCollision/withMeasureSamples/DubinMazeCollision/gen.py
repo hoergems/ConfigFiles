@@ -64,7 +64,7 @@ for i in xrange(1, covarianceSteps+1):
 				elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
 					data[k] = "outputFile = /data/hoe01h/oppt_devel/files/trajectorySamplesDubin/trajectorySamplesDubinMaze.txt \n"
 				elif "measureOutputFileEMD" in data[k]:
-					data[k] = "measureOutputFileEMD = /data/hoe01h/oppt_devel/files/measureSamplesDubin/measureSamplesDubinMazeEMD" + str(i) + ".txt \n" 
+					data[k] = "measureOutputFileEMD = /data/hoe01h/oppt_devel/files/measureSamplesDubin/measureSamplesDubinMazeCollisionEMD" + str(i) + ".txt \n" 
 			with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
 				for k in xrange(len(data)):
 					l.write(data[k])		
