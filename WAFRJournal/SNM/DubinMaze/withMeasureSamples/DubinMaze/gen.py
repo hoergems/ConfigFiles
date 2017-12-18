@@ -69,4 +69,4 @@ for i in xrange(1, covarianceSteps+1):
 				for k in xrange(len(data)):
 					l.write(data[k])		
 	observationCovariance += covarianceStepSize
-    processCovariance += covarianceStepSize
+	processCovariance += covarianceStepSize
