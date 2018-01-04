@@ -37,15 +37,14 @@ processCovariance = minCovariance
 observationCovariance = minCovariance
 
 folder = "cfg"
-if not os.path.isdir(folder):    
-	os.makedirs(folder)
+if os.path.isdir(folder):
+    shutil.rmtree(folder)
+os.makedirs(folder)
 
 for i in xrange(1, covarianceSteps+1):
 	observationCovariance = minCovariance
 	j=i
-	folder = "cfg" + "/" + str(numObstacles) + "obstacles/" + str(i) + "_proc_" + str(j) + "_obs"
-	if os.path.isdir(folder):
-		shutil.rmtree(folder)
+	folder = "cfg" + "/" + str(i) + "_proc_" + str(j) + "_obs"
 	os.makedirs(folder)
 	for l in xrange(numRuns) :
 		with open(environmentTemplate + ".cfg", 'r') as f:
@@ -56,22 +55,18 @@ for i in xrange(1, covarianceSteps+1):
 				elif "observationError" in data[k]:
 					data[k] = "observationError = " + str(observationCovariance) + " \n"
 				elif "logPath" in data[k]:
-					dr = resultsPath + environmentTemplate + "/" + str(numObstacles) + "obstacles/" + str(i) + "_proc_" + str(j) + "_obs/"
+					dr = resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/"
 					data[k] = "logPath = " + resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/ \n"
 					if not os.path.exists(dr):
 						os.makedirs(dr)
-				elif "planningEnvironmentPath =" in data[k]:
-					data[k] = "planningEnvironmentPath = world_random_4DOFManipulator_" + str(numObstacles) + "_" + str(l) + ".sdf \n"
-                                elif "executionEnvironmentPath =" in data[k]:
-					data[k] = "executionEnvironmentPath = world_random_4DOFManipulator_" + str(numObstacles) + "_" + str(l) + ".sdf \n" 
 				elif "logFilePostfix" in data[k]:
 					data[k] = "logFilePostfix = " + str(l) + " \n"	
 				elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
-					data[k] = "outputFile = /data/hoe01h/oppt_devel/files/trajectorySamples4DOF/trajectorySamples" + environmentTemplate + str(numObstacles) + "obstacles" + str(l) + ".txt \n"
+					data[k] = "outputFile = /data/hoe01h/oppt_devel/files/trajectorySamplesDubin/trajectorySamplesDubinEmptyEnvironment.txt \n"
 				elif "measureOutputFileEMD" in data[k]:
-					data[k] = "measureOutputFileEMD = /data/hoe01h/oppt_devel/files/measureSamples4DOF/measureSamples" + environmentTemplate + "EMD" + str(numObstacles) + "obstacles" + str(l) + ".txt \n"
+					data[k] = "measureOutputFileEMD = /data/hoe01h/oppt_devel/files/measureSamplesDubin/measureSamplesDubinEmptyEnvironmentEMD" + str(i) + ".txt \n"
 				elif "measureOutputFileTV" in data[k]:
-					data[k] = "measureOutputFileTV = /data/hoe01h/oppt_devel/files/measureSamples4DOF/measureSamples" + environmentTemplate + "TV" + str(numObstacles) + "obstacles" + str(l) + ".txt \n" 
+					data[k] = "measureOutputFileTV = /data/hoe01h/oppt_devel/files/measureSamplesDubin/measureSamplesDubinEmptyEnvironmentTV" + str(i) + ".txt \n" 
 			with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
 				for k in xrange(len(data)):
 					l.write(data[k])		
