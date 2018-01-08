@@ -53,7 +53,7 @@ for i in xrange(1, covarianceSteps+1):
 				if "processError" in data[k]:
 					data[k] = "processError = " + str(processCovariance) + " \n"
 				elif "observationError" in data[k]:
-					data[k] = "observationError = " + str(observationCovariance) + " \n"
+					data[k] = "observationError = " + str(processCovariance) + " \n"
 				elif "logPath" in data[k]:
 					dr = resultsPath + environmentTemplate + "/" + str(i) + "_proc_" + str(j) + "_obs/"
 					data[k] = "logPath = " + dr + " \n"
