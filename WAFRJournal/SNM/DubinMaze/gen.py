@@ -28,7 +28,7 @@ if (resultsPath.strip()[-1] != "/"):
  
 postFix = args.postFix
 minCovariance = float(args.minCovariance)
-maxCovariance = float(args.maxCovariance)data[k] = "logFilePostfix = " + postfix + str(l) + " \n"
+maxCovariance = float(args.maxCovariance)
 covarianceSteps = int(args.covarianceSteps)
 numRuns = int(args.numRuns)
     
