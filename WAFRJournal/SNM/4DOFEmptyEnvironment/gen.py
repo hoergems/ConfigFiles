@@ -68,7 +68,7 @@ for i in xrange(1, covarianceSteps+1):
 		elif "measureOutputFileEMD" in data[k]:
 		    data[k] = "measureOutputFileEMD = /data/hoe01h/oppt_devel/files/measureSamples4DOF/measureSamples" + environmentTemplate + "EMD" + str(i) + ".txt \n"
 		elif "measureOutputFileTV" in data[k]:
-		    data[k] = "measureOutputFileTV = /data/hoe01h/oppt_devel/files/measureSamples4DOF/measureSamples" + environmentTemplate + "TV" + postFix + + str(i) + ".txt \n" 
+		    data[k] = "measureOutputFileTV = /data/hoe01h/oppt_devel/files/measureSamples4DOF/measureSamples" + environmentTemplate + "TV" + postFix + str(i) + ".txt \n" 
 	    with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
 		for k in xrange(len(data)):
 		    l.write(data[k])		
