@@ -62,7 +62,7 @@ for i in xrange(1, covarianceSteps+1):
 		    if not os.path.exists(dr):
 			os.makedirs(dr)
 		elif "logFilePostfix" in data[k]:
-		    data[k] = "logFilePostfix = " + postfix + str(l) + " \n"	
+		    data[k] = "logFilePostfix = " + postFix + str(l) + " \n"	
 		elif "outputFile" in data[k] and not "measureOutputFile" in data[k]:
 		    data[k] = "outputFile = /data/hoe01h/oppt_devel/files/trajectorySamples4DOF/trajectorySamples" + environmentTemplate + ".txt \n"
 		elif "measureOutputFileEMD" in data[k]:
