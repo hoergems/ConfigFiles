@@ -1,7 +1,7 @@
 import os
 
 
-for i in xrange(10):
+for i in xrange(100):
     outFile = "4DOFFactory1ApproxMax" + str(i) + ".cfg"
     if os.path.isfile(outFile):
 	os.remove(outFile)
@@ -15,6 +15,6 @@ for i in xrange(10):
 		elif "heuristicOutputFile = " in line:
 		    of.write("heuristicOutputFile = /data/hoe01h/oppt_devel/files/approximateDynamics/heuristicSamples4DOFFactory1" + str(i) + ".txt \n")
 		elif "numThreads =" in line:
-		    of.write("numThreads = 6 \n")
+		    of.write("numThreads = 1 \n")
 		else:		    
 		    of.write(line)   
