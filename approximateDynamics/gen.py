@@ -15,6 +15,6 @@ for i in xrange(100):
 		elif "heuristicOutputFile = " in line:
 		    of.write("heuristicOutputFile = /data/hoe01h/oppt_devel/files/approximateDynamics/heuristicSamples4DOFFactory1" + str(i) + ".txt \n")
 		elif "numThreads =" in line:
-		    of.write("numThreads = 1 \n")
+		    of.write("numThreads = 6 \n")
 		else:		    
 		    of.write(line)   
