@@ -1,7 +1,7 @@
 import os
 
 
-for i in xrange(100):
+for i in xrange(1000):
     outFile = "4DOFFactory1ApproxMax" + str(i) + ".cfg"
     if os.path.isfile(outFile):
 	os.remove(outFile)
