@@ -1,8 +1,8 @@
 import os
 
 
-for i in xrange(1000):
-    outFile = "KukaTable" + str(i) + ".cfg"
+for i in xrange(2000):
+    outFile = "KukaTable" + str(i) + ".cfg"    
     if os.path.isfile(outFile):
 	os.remove(outFile)
     with open("KukaTable.cfg", 'r') as f:
