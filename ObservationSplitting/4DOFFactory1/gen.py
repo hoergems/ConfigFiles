@@ -58,8 +58,10 @@ for i in xrange(1, covarianceSteps+1):
 		    if not os.path.exists(dr):
 			os.makedirs(dr)
 		elif "logFilePostfix" in data[k]:
-		    data[k] = "logFilePostfix = " + str(l) + " \n"		
-	    with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:		
+		    data[k] = "logFilePostfix = " + str(l) + " \n"	
+		elif "maxObservationDistance" in data[k]:
+			data[k] = "maxObservationDistance = " + str(processCovariance) + " \n"	
+	    with open(folder + "/" + environmentTemplate + "_" + str(l) + ".cfg", 'a+') as l:
 		for k in xrange(len(data)):
 		    l.write(data[k])		
 	observationCovariance += covarianceStepSize
