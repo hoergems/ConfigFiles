@@ -52,7 +52,7 @@ for i in xrange(1, covarianceSteps+1):
 	with open(environmentTemplate + ".cfg", 'r') as f:
 	    data = f.readlines()                
 	    for k in xrange(len(data)):		
-		elif "logPath" in data[k]:
+		if "logPath" in data[k]:
 		    dr = resultsPath + environmentTemplate + "/" + str(i) + "_dist/"
 		    data[k] = "logPath = " + dr + " \n"
 		    if not os.path.exists(dr):
