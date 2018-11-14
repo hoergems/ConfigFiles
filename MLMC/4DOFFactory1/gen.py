@@ -38,6 +38,7 @@ if not os.path.isdir(folder):
                 elif "logFilePostfix" in data[k]:
                     data[k] = "logFilePostfix = " + str(l) + " \n"
             cfgFile = folder + "/" + environmentTemplate + "_" + str(l) + ".cfg"
+            print cfgFile
             with open(cfgFile, 'a+') as l:
                 print "open " + cfgFile
                 for k in xrange(len(data)):
