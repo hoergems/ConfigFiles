@@ -28,13 +28,13 @@ if not os.path.isdir(folder):
     os.makedirs(folder)
     for l in xrange(numRuns):
     	with open(environmentTemplate + ".cfg", 'r') as f:
-    		data = f.readlines()
-    		for k in xrange(len(data)):
-    			if "logPath" in data[k]:
-    				dr = resultsPath + environmentTemplate + "/"
-    				data[k] = "logPath = " + dr + " \n"
-    				if not os.path.exists(dr):
-    					os.makedirs(dr)
+            data = f.readlines()
+            for k in xrange(len(data)):
+                if "logPath" in data[k]:
+                    dr = resultsPath + environmentTemplate + "/"
+                    data[k] = "logPath = " + dr + " \n"
+                    if not os.path.exists(dr):
+                        os.makedirs(dr)
     			elif "logFilePostfix" in data[k]:
     				data[k] = "logFilePostfix = " + str(l) + " \n"
             cfgFile = folder + "/" + environmentTemplate + "_" + str(l) + ".cfg"
