@@ -35,8 +35,8 @@ if not os.path.isdir(folder):
                     data[k] = "logPath = " + dr + " \n"
                     if not os.path.exists(dr):
                         os.makedirs(dr)
-    			elif "logFilePostfix" in data[k]:
-    				data[k] = "logFilePostfix = " + str(l) + " \n"
+                elif "logFilePostfix" in data[k]:
+                    data[k] = "logFilePostfix = " + str(l) + " \n"
             cfgFile = folder + "/" + environmentTemplate + "_" + str(l) + ".cfg"
             with open(cfgFile, 'a+') as l:
                 print "open " + cfgFile
