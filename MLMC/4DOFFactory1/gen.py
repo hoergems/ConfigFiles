@@ -27,7 +27,7 @@ if os.path.isdir(folder):
     shutil.rmtree(folder)
 os.makedirs(folder)
 for l in xrange(numRuns):
-	with open(environmentTemplate + ".cfg", 'r') as f:
+    with open(environmentTemplate + ".cfg", 'r') as f:
         data = f.readlines()
         for k in xrange(len(data)):
             if "logPath" in data[k]:
