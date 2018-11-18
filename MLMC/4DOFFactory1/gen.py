@@ -44,9 +44,9 @@ for alg in algs:
                     if alg == "noCorrection":
                         data[k] = "planningSimulationStepSize = 0.0 \n"
                     elif alg == "bias":
-                        data[k] = "planningSimulationStepSize = 0.2 \n"
+                        data[k] = "planningSimulationStepSize = 0.02 \n"
                     elif alg == "correction":
-                        data[k] = "planningSimulationStepSize = 0.2 \n"
+                        data[k] = "planningSimulationStepSize = 0.02 \n"
                 elif "mlmc" in data[k]:
                     if alg == "noCorrection":
                         data[k] = "mlmc = false \n"
