@@ -26,20 +26,37 @@ folder = "cfg/"
 if os.path.isdir(folder):
     shutil.rmtree(folder)
 os.makedirs(folder)
-for l in xrange(numRuns):
-    with open(environmentTemplate + ".cfg", 'r') as f:
-        data = f.readlines()
-        for k in xrange(len(data)):
-            if "logPath" in data[k]:
-                dr = resultsPath + environmentTemplate + "/"
-                data[k] = "logPath = " + dr + " \n"
-                if not os.path.exists(dr):
-                    os.makedirs(dr)
-            elif "logFilePostfix" in data[k]:
-                data[k] = "logFilePostfix = " + str(l) + " \n"
-        cfgFile = folder + "/" + environmentTemplate + "_" + str(l) + ".cfg"
-        print cfgFile
-        with open(cfgFile, 'a+') as l:
-            print "open " + cfgFile
+
+algs = ["noCorrection", "bias", "correction"]
+for alg in algs:
+    for l in xrange(numRuns):
+        with open(environmentTemplate + ".cfg", 'r') as f:
+            data = f.readlines()
             for k in xrange(len(data)):
-                l.write(data[k])
+                if "logPath" in data[k]:
+                    dr = resultsPath + environmentTemplate + "/"
+                    data[k] = "logPath = " + dr + " \n"
+                    if not os.path.exists(dr):
+                        os.makedirs(dr)
+                elif "logFilePostfix" in data[k]:
+                    data[k] = "logFilePostfix = " + alg + str(l) + " \n"
+                elif "planningSimulationStepSize" in data[k]:
+                    if alg == "noCorrection":
+                        data[k] = "planningSimulationStepSize = 0.0 \n"
+                    elif alg == "bias":
+                        data[k] = "planningSimulationStepSize = 0.2 \n"
+                    elif alg == "correction":
+                        data[k] = "planningSimulationStepSize = 0.2 \n"
+                elif "mlmc" in data[k]:
+                    if alg == "noCorrection":
+                        data[k] = "mlmc = false \n"
+                    elif alg == "bias":
+                        data[k] = "mlmc = false \n"
+                    elif alg == "correction":
+                        data[k] = "mlmc = true \n"
+            cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(l) + ".cfg"
+            print cfgFile
+            with open(cfgFile, 'a+') as l:
+                print "open " + cfgFile
+                for k in xrange(len(data)):
+                    l.write(data[k])
