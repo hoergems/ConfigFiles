@@ -59,7 +59,7 @@ for time in times:
                         elif alg == "correction":
                             data[k] = "mlmc = true \n"
                     elif "stepTimeout" in data[k]:
-                        data[k] = "stepTimeout = " + str(time)
+                        data[k] = "stepTimeout = " + str(time) + "\n"
                 cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(time) + "_" + str(l) + ".cfg"
                 print cfgFile
                 with open(cfgFile, 'a+') as l:
