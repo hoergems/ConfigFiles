@@ -27,7 +27,7 @@ if os.path.isdir(folder):
     shutil.rmtree(folder)
 os.makedirs(folder)
 
-times = [1000, 1500, 2500, 3000, 3500, 4000, 4500, 5000]
+times = [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000]
 algs = ["noCorrection", "bias", "correction", "pomcp"]
 for time in times:
     for alg in algs:
