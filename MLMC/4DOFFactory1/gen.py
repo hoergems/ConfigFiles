@@ -28,7 +28,7 @@ if os.path.isdir(folder):
 os.makedirs(folder)
 
 times = [1000, 1500, 2500, 3000, 3500, 4000, 4500, 5000]
-algs = ["noCorrection", "bias", "correction"]
+algs = ["noCorrection", "bias", "correction", "pomcp"]
 for time in times:
     for alg in algs:
         for l in xrange(numRuns):
@@ -49,6 +49,8 @@ for time in times:
                             data[k] = "planningSimulationStepSize = 0.02 \n"
                         elif alg == "correction":
                             data[k] = "planningSimulationStepSize = 0.02 \n"
+                        elif alg == "pomcp":
+                            data[k] = "planningSimulationStepSize = 0.0 \n"
                     elif "mlmc" in data[k]:
                         if alg == "noCorrection":
                             data[k] = "mlmc = false \n"
