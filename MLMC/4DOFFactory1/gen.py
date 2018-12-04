@@ -60,10 +60,6 @@ for time in times:
                             data[k] = "mlmc = true \n"
                     elif "stepTimeout" in data[k]:
                         data[k] = "stepTimeout = " + str(time) + "\n"
-                    elif "maxLength" in data[k]:
-                        data[k] = "maxLength = 0\n"
-                    elif "numLevels" in data[k]:
-                        data[k] = "numLevels = 7\n"
                 cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(time) + "_" + str(l) + ".cfg"
                 print cfgFile
                 with open(cfgFile, 'a+') as l:
