@@ -46,9 +46,9 @@ for time in times:
                         if alg == "noCorrection":
                             data[k] = "planningSimulationStepSize = 0.0 \n"
                         elif alg == "bias":
-                            data[k] = "planningSimulationStepSize = 0.02 \n"
+                            data[k] = "planningSimulationStepSize = 0.0128 \n"
                         elif alg == "correction":
-                            data[k] = "planningSimulationStepSize = 0.02 \n"
+                            data[k] = "planningSimulationStepSize = 0.0128 \n"
                         elif alg == "pomcp":
                             data[k] = "planningSimulationStepSize = 0.0 \n"
                     elif "mlmc" in data[k]:
