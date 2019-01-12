@@ -47,7 +47,10 @@ for alg in algs:
                     elif alg == "bias":
                         data[k] = "mlmc = false \n"
                     elif alg == "correction":
-                        data[k] = "mlmc = true \n"                
+                        data[k] = "mlmc = true \n"
+                elif "planningSimulationStepSize" in data[k]:
+                    if alg == "noCorrection":
+                        data[k] = "planningSimulationStepSize = 0.0 \n"                                
             cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(l) + ".cfg"
             print cfgFile
             with open(cfgFile, 'a+') as l:
