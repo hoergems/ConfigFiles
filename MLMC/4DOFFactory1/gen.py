@@ -69,7 +69,7 @@ for alg in algs:
                     data[k] = "bellmanBackup = true \n"
                 elif "stepTimeout" in data[k]:
                     data[k] = "stepTimeout = " + str(planningTime) + " \n"
-            cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(l) + ".cfg"
+            cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(planningTime) + "_" + str(l) + ".cfg"
             print cfgFile
             with open(cfgFile, 'a+') as l:
                 print "open " + cfgFile
