@@ -52,7 +52,7 @@ for alg in algs:
                     if alg == "noCorrection" or alg == "pomcp":
                         data[k] = "planningSimulationStepSize = 0.0 \n"
                     else:
-                        data[k] = "planningSimulationStepSize = 0.2 \n"
+                        data[k] = "planningSimulationStepSize = 0.02 \n"
                 elif "keepPolicy" in data[k]:
                     if alg == "noCorrection":
                         data[k] = "keepPolicy = true \n"
