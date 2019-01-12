@@ -27,42 +27,47 @@ if os.path.isdir(folder):
     shutil.rmtree(folder)
 os.makedirs(folder)
 
-times = [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 10000, 15000]
-algs = ["noCorrection", "bias", "correction", "pomcp"]
-for time in times:
-    for alg in algs:
-        for l in xrange(numRuns):
-            with open(environmentTemplate + ".cfg", 'r') as f:
-                data = f.readlines()
+
+algs = ["noCorrection", "correction", "pomcp"]
+for alg in algs:
+    for l in xrange(numRuns):
+        with open(environmentTemplate + ".cfg", 'r') as f:
+            data = f.readlines()
+            for k in xrange(len(data)):
+                if "logPath" in data[k]:
+                    dr = resultsPath + environmentTemplate + "/"
+                    data[k] = "logPath = " + dr + " \n"
+                    if not os.path.exists(dr):
+                        os.makedirs(dr)
+                elif "logFilePostfix" in data[k]:
+                    data[k] = "logFilePostfix = " + alg + "_" + str(l) + " \n"                
+                elif "mlmc" in data[k]:
+                    if alg == "noCorrection":
+                        data[k] = "mlmc = false \n"
+                    elif alg == "bias":
+                        data[k] = "mlmc = false \n"
+                    elif alg == "correction":
+                        data[k] = "mlmc = true \n"
+                elif "planningSimulationStepSize" in data[k]:
+                    if alg == "noCorrection" or alg == "pomcp":
+                        data[k] = "planningSimulationStepSize = 0.0 \n"
+                    else:
+                        data[k] = "planningSimulationStepSize = 0.0128 \n"
+                elif "keepPolicy" in data[k]:
+                    if alg == "noCorrection":
+                        data[k] = "keepPolicy = true \n"
+                    elif alg == "correction":
+                        data[k] = "keepPolicy = false \n"                    
+                elif "deleteSubtree" in data[k]:
+                    if alg == "correction":
+                        data[k] = "deleteSubtree = true \n"
+                    else:
+                        data[k] = "deleteSubtree = false \n"
+                elif "bellmanBackup" in data[k]:
+                    data[k] = "bellmanBackup = true \n"
+            cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(l) + ".cfg"
+            print cfgFile
+            with open(cfgFile, 'a+') as l:
+                print "open " + cfgFile
                 for k in xrange(len(data)):
-                    if "logPath" in data[k]:
-                        dr = resultsPath + environmentTemplate + "/"
-                        data[k] = "logPath = " + dr + " \n"
-                        if not os.path.exists(dr):
-                            os.makedirs(dr)
-                    elif "logFilePostfix" in data[k]:
-                        data[k] = "logFilePostfix = " + alg + "_" + str(time) + "_" + str(l) + " \n"
-                    elif "planningSimulationStepSize" in data[k]:
-                        if alg == "noCorrection":
-                            data[k] = "planningSimulationStepSize = 0.0 \n"
-                        elif alg == "bias":
-                            data[k] = "planningSimulationStepSize = 0.0128 \n"
-                        elif alg == "correction":
-                            data[k] = "planningSimulationStepSize = 0.0128 \n"
-                        elif alg == "pomcp":
-                            data[k] = "planningSimulationStepSize = 0.0 \n"
-                    elif "mlmc" in data[k]:
-                        if alg == "noCorrection":
-                            data[k] = "mlmc = false \n"
-                        elif alg == "bias":
-                            data[k] = "mlmc = false \n"
-                        elif alg == "correction":
-                            data[k] = "mlmc = true \n"
-                    elif "stepTimeout" in data[k]:
-                        data[k] = "stepTimeout = " + str(time) + "\n"
-                cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(time) + "_" + str(l) + ".cfg"
-                print cfgFile
-                with open(cfgFile, 'a+') as l:
-                    print "open " + cfgFile
-                    for k in xrange(len(data)):
-                        l.write(data[k])
+                    l.write(data[k])
