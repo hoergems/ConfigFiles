@@ -42,7 +42,7 @@ for alg in algs:
                     if not os.path.exists(dr):
                         os.makedirs(dr)
                 elif "logFilePostfix" in data[k]:
-                    data[k] = "logFilePostfix = " + alg + "_" + str(l) + " \n"                
+                    data[k] = "logFilePostfix = " + alg + "_" + str(planningTime) + "_" + str(l) + " \n"                
                 elif "mlmc" in data[k]:
                     if alg == "noCorrection":
                         data[k] = "mlmc = false \n"
