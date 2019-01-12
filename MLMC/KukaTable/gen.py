@@ -59,7 +59,7 @@ for alg in algs:
                     elif alg == "correction":
                         data[k] = "keepPolicy = false \n"                    
                 elif "deleteSubtree" in data[k]:
-                    if alg == "correction"
+                    if alg == "correction":
                         data[k] = "deleteSubtree = true \n"
                     else:
                         data[k] = "deleteSubtree = false \n"
