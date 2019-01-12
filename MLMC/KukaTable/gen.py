@@ -50,7 +50,16 @@ for alg in algs:
                         data[k] = "mlmc = true \n"
                 elif "planningSimulationStepSize" in data[k]:
                     if alg == "noCorrection" or alg == "pomcp":
-                        data[k] = "planningSimulationStepSize = 0.0 \n"                                                   
+                        data[k] = "planningSimulationStepSize = 0.0 \n"
+                elif "keepPolicy" in data[k]:
+                    if alg = "noCorrection":
+                        data[k] = "keepPolicy = true \n"
+                    elif alg = "correction":
+                        data[k] = "keepPolicy = false \n"                    
+                elif "deleteSubtree" in data[k]:
+                    data[k] = "deleteSubtree = false \n"
+                elif "bellmanBackup" in data[k]:
+                    data[k] = "bellmanBackup = true \n"
             cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(l) + ".cfg"
             print cfgFile
             with open(cfgFile, 'a+') as l:
