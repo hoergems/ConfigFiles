@@ -54,9 +54,9 @@ for alg in algs:
                     else:
                         data[k] = "planningSimulationStepSize = 0.2 \n"
                 elif "keepPolicy" in data[k]:
-                    if alg = "noCorrection":
+                    if alg == "noCorrection":
                         data[k] = "keepPolicy = true \n"
-                    elif alg = "correction":
+                    elif alg == "correction":
                         data[k] = "keepPolicy = false \n"                    
                 elif "deleteSubtree" in data[k]:
                     data[k] = "deleteSubtree = false \n"
