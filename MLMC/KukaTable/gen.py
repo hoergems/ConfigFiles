@@ -59,7 +59,10 @@ for alg in algs:
                     elif alg == "correction":
                         data[k] = "keepPolicy = false \n"                    
                 elif "deleteSubtree" in data[k]:
-                    data[k] = "deleteSubtree = false \n"
+                    if alg == "correction"
+                        data[k] = "deleteSubtree = true \n"
+                    else:
+                        data[k] = "deleteSubtree = false \n"
                 elif "bellmanBackup" in data[k]:
                     data[k] = "bellmanBackup = true \n"
             cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(l) + ".cfg"
