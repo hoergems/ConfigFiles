@@ -57,7 +57,7 @@ for alg in algs:
                     if alg == "noCorrection":
                         data[k] = "deleteSubtree = false \n"
                     elif alg == "correction":
-                        data[k] = "deleteSubtree = false \n"
+                        data[k] = "deleteSubtree = true \n"
             cfgFile = folder + "/" + environmentTemplate + "_" + alg + "_" + str(l) + ".cfg"
             print cfgFile
             with open(cfgFile, 'a+') as l:
